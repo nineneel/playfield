@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .text-shadow {
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    .text-shadow-md {
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12),
+            0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .text-shadow-lg {
+        text-shadow: 0 15px 30px rgba(0, 0, 0, 0.11),
+            0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .text-shadow-none {
+        text-shadow: none;
+    }
+}
+
+@layer components {
+    .card-product {
+        @apply flex-col items-center border-2 border-black px-6 py-3 rounded-3xl font-secondary shadow-product-card;
+    }
+
+    .section-title {
+        @apply font-bold text-4xl text-center;
+    }
+
+    .our-container {
+        @apply container mx-auto px-4 xl:px-28;
+    }
+
+    .testimony-card {
+        @apply bg-white p-6 flex flex-col items-center gap-3 rounded-3xl border-2 border-black shadow-profile-card;
+    }
+}
+
+@layer utilities {
+    .swiper-slide-home {
+        @apply flex justify-center items-center border-2 border-black rounded-xl overflow-hidden w-[320px] h-[208px] object-contain;
+    }
+
+    .swiper-slide-product {
+        @apply flex items-center justify-center bg-white max-h-[480px];
+    }
+
+    .swiper {
+        @apply w-full h-full;
+    }
+}
