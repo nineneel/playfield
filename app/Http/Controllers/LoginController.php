@@ -91,7 +91,6 @@ class LoginController extends Controller
                 return redirect()->route('sign_up_step_1_view')->with('user_id', $create['id'])->with('avatar', $avatar);
             }
         } catch (Exception $e) {
-            dd($e);
             return redirect()->route('login');
         }
     }

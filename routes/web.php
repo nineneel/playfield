@@ -1,17 +1,21 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardFacilityController;
+use App\Http\Controllers\DashboardOrderController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardTagController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MulitpleSignUp;
+use App\Http\Controllers\MyFriendController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\UserPageController;
 use App\Models\Facility;
 use App\Models\Order;
 use App\Models\Photo;
@@ -31,14 +35,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Home 
-Route::get('/', function () {
-    return view('home', [
-        "facilities" => Facility::all(),
-        "photos" => Photo::all(),
-        "products" => Product::all(),
-        "users" => User::where('role', 'user')->take(4)->get()
-    ]);
-})->name('home');
+Route::get('/', [UserPageController::class, 'home'])->name('home');
 
 // Products
 Route::get('/products', function () {
@@ -48,11 +45,7 @@ Route::get('/products', function () {
 });
 
 // Friend List
-Route::get('/friends', function () {
-    return view('friends', [
-        "users" => User::where('role', 'user')->get()
-    ]);
-});
+Route::get('/friends', [UserPageController::class, 'friends'])->name('friends');
 
 // Login Page
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -97,9 +90,11 @@ Route::get('/my-dashboard/orders', function () {
 })->name('myDashboard.orders')->middleware('can:isUser');
 
 // User Dashboard Chat
-Route::get('/my-dashboard/friends', function () {
-    return view("userDashboard.myFriend.index");
-})->middleware('can:isUser');
+Route::get('/my-dashboard/friends', [MyFriendController::class, 'index'])->middleware('can:isUser');
+Route::get('/my-dashboard/conversation/{id}', [MyFriendController::class, 'conversation'])->name('conversation')->middleware('can:isUser');
+Route::get('/my-dashboard/friend/add/{id}', [MyFriendController::class, 'add_conversation'])->middleware('can:isUser');
+
+Route::post('/send-message/{id}', [ChatController::class, 'send']);
 
 
 // ================================================ Admin ========================================
@@ -122,3 +117,6 @@ Route::resource("/admin/dashboard/photos", PhotoController::class)->middleware('
 
 // Dashboard Tag
 Route::resource("/admin/dashboard/tags", DashboardTagController::class)->middleware('can:isAdmin');
+
+// Dashboard Order
+Route::resource("/admin/dashboard/orders", DashboardOrderController::class)->middleware('can:isAdmin');

@@ -6,8 +6,8 @@
         <div class="container mx-auto">
             <div class="px-4 flex flex-col justify-center items-center">
                 <div class="flex flex-wrap">
-                    <h2 class="w-full font-bold text-3xl text-center mb-1">
-                        MY FRIENDS
+                    <h2 class="w-full font-bold text-3xl text-center mb-1 uppercase">
+                        Meet Others
                     </h2>
                     <p class="w-full font-semibold text-base text-center">
                         Add your friends and ask them to play dates with you
@@ -39,10 +39,12 @@
                                     <img src="@if ($user->password != 0) {{ asset('storage/' . $user->details->image) }} @else {{ $user->details->image }} @endif"
                                         alt="Photo Profile" class="w-28 h-28 object-cover" />
                                 </div>
-                                <button
-                                    class="absolute bottom-4 right-4 bg-primary w-12 h-12 flex items-center justify-center rounded-full border-2 border-black hover:bg-purple">
-                                    <i data-feather="message-square"></i>
-                                </button>
+                                @if (auth()->check())
+                                    <a href="/my-dashboard/friend/add/{{ $user->id }}"
+                                        class="absolute bottom-4 right-4 bg-primary w-12 h-12 flex items-center justify-center rounded-full border-2 border-black hover:bg-purple">
+                                        <i data-feather="message-square"></i>
+                                    </a>
+                                @endif
                                 <h5 class="font-bold text-xl">{{ $user->name }}</h5>
                                 <p class="font-bold text-xs my-2">
                                     {{ $user->details->gender }},

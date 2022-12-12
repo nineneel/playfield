@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Field</title>
+    <link rel="shortcut icon" href="{{ asset('logo.svg') }}">
 
     {{-- Scrollbar CSS --}}
     <link rel="stylesheet" href="/css/scrollbar.css" />
@@ -32,6 +33,7 @@
 
     {{-- Vite --}}
     @vite('resources/css/app.css')
+    {{-- @vite('resources/js/app.js') --}}
 </head>
 
 <body class="font-primary">

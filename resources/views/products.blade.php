@@ -35,9 +35,9 @@
                             <h1 class="font-bold text-xl self-center text-center mb-3 uppercase">
                                 {{ $product->name }}
                             </h1>
-                            <div class="border-2 border-solid border-black rounded-lg overflow-hidden mb-3 relative">
+                            <div class="border-2 border-solid border-black rounded-lg overflow-hidden mb-3 w-full relative">
                                 <img src="{{ asset('storage/' . $product->images[0]->image) }}"
-                                    alt="{{ $product->name }} image profile" class="h-[178px] object-cover" />
+                                    alt="{{ $product->name }} image profile" class="h-[178px] object-cover w-full" />
                                 <p
                                     class="absolute right-1 top-1 py-1 px-2 border-2 border-black rounded-lg bg-green font-semibold text-xs">
                                     Age: {{ $product->age }}

@@ -38,13 +38,13 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth()->user()->role == "admin") {
-            return back()->withErrors([
-                'failed' => 'Your are an admin!',
-            ])->onlyInput('email');
-        } else if (!Auth::check()) {
+        if (!Auth::check()) {
             return redirect()->route('login')->withErrors([
                 'login_first' => 'Login First,',
+            ])->onlyInput('email');
+        } else if (Auth()->user()->role == "admin") {
+            return back()->withErrors([
+                'failed' => 'Your are an admin!',
             ])->onlyInput('email');
         }
 

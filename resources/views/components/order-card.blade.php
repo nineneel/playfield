@@ -30,7 +30,7 @@
             <h4 class="font-bold text-sm lg:text-lg">Rp. {{ $order->product->price }}</h4>
         </div>
         <div class="flex flex-wrap justify-center lg:justify-end gap-4 lg:items-end pb-4">
-            @if ($order->paid_status == 'not_paid')
+            @if ($order->paid_status == 'not_paid' && !(Carbon::parse($order->bookdate)->isPast() == 1))
                 <a href="/checkout/{{ $order->id }}"
                     class=" flex border-[3px] bg-primary border-black rounded-xl font-bold text-sm py-1 px-4 lg:text-base lg:py-1.5 lg:px-6 hover:bg-purple">Pay
                     Now</a>

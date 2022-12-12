@@ -40,7 +40,6 @@
                         @enderror
                     </div>
                     <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Login</button>
-                    <p class="mt-3 mb-3 text-muted text-center">Not regitered? <a href="/registration">Register Now!</a></p>
                 </form>
             </main>
         </div>

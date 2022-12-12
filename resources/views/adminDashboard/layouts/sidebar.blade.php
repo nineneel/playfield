@@ -2,13 +2,6 @@
     <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" aria-current="page"
-                    href="/">
-                    <i data-feather="home" class="align-text-bottom"></i>
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link {{ Request::is('admin/dashboard/products*') ? 'active' : '' }}"
                     href="/admin/dashboard/products">
                     <i data-feather="shopping-bag" class="align-text-bottom"></i>
@@ -34,6 +27,13 @@
                     href="/admin/dashboard/tags">
                     <i data-feather="tag" class="align-text-bottom"></i>
                     Tags
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('admin/dashboard/orders*') ? 'active' : '' }}"
+                    href="/admin/dashboard/orders">
+                    <i data-feather="shopping-cart" class="align-text-bottom"></i>
+                    Orders
                 </a>
             </li>
         </ul>

@@ -98,9 +98,10 @@
                                 <h1 class="font-bold text-xl self-center text-center mb-3 uppercase">
                                     {{ $product->name }}
                                 </h1>
-                                <div class="border-2 border-solid border-black rounded-lg overflow-hidden mb-3 relative">
+                                <div
+                                    class="border-2 border-solid border-black rounded-lg overflow-hidden mb-3 w-full relative">
                                     <img src="{{ asset('storage/' . $product->images[0]->image) }}"
-                                        alt="{{ $product->name }} image profile" class="h-[178px] object-cover" />
+                                        alt="{{ $product->name }} image profile" class="h-[178px] object-cover  w-full" />
                                     <p
                                         class="absolute right-1 top-1 py-1 px-2 border-2 border-black rounded-lg bg-green font-semibold text-xs">
                                         Age: {{ $product->age }}
@@ -196,10 +197,12 @@
                                 <img src="@if ($user->password != 0) {{ asset('storage/' . $user->details->image) }} @else {{ $user->details->image }} @endif"
                                     alt="Photo Profile" class="w-28 h-28 object-cover" />
                             </div>
-                            <button
-                                class="absolute bottom-4 right-4 bg-primary w-12 h-12 flex items-center justify-center rounded-full border-2 border-black hover:bg-purple">
-                                <i data-feather="message-square"></i>
-                            </button>
+                            @if (auth()->check())
+                                <a href="/my-dashboard/friend/add/{{ $user->id }}"
+                                    class="absolute bottom-4 right-4 bg-primary w-12 h-12 flex items-center justify-center rounded-full border-2 border-black hover:bg-purple">
+                                    <i data-feather="message-square"></i>
+                                </a>
+                            @endif
                             <h5 class="font-bold text-xl">{{ $user->name }}</h5>
                             <p class="font-bold text-xs my-2">
                                 {{ $user->details->gender }},
@@ -229,7 +232,7 @@
         <div class="our-container">
             <h2 class="section-title mb-6">FIND US HERE</h2>
             <div class="border-[3px] border-black rounded-lg overflow-hidden relative">
-                <a href="https://goo.gl/maps/5ZnmeyJfVuTu6DGd9"
+                <a href="https://goo.gl/maps/1jpzAhuD3QG6xvLK9"
                     class="z-10 absolute font-extrabold text-xl bg-primary border-2 border-black rounded-xl py-2 px-8 bottom-4 left-1/2 -translate-x-1/2 hover:bg-purple"
                     target="_blank">SEE MAP</a>
                 <div class="mapouter">

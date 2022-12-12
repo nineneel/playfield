@@ -33,7 +33,7 @@
                                 <a href="/products" class="text-base font-extrabold uppercase">Learning Kit</a>
                             </li>
                             <li class="my-2">
-                                <a href="/friends" class="text-base font-extrabold uppercase">My Friends</a>
+                                <a href="/friends" class="text-base font-extrabold uppercase">Meet Others</a>
                             </li>
 
                             <li class="my-2 mt-4 lg:mt-2">
@@ -43,12 +43,11 @@
                                         In</a>
                                 @else
                                     @can('isUser')
-                                        <a href="/my-dashboard" class="flex gap-x-3 items-center group">
+                                        <a href="/my-dashboard/orders" class="flex gap-x-3 items-center group">
                                             <img src="@if (auth()->user()->password != 0) {{ asset('storage/' . auth()->user()->details->image) }} @else {{ auth()->user()->details->image }} @endif"
                                                 alt="avatar"
-                                                class="border-[1px] border-black rounded-full w-12 h-12 group-hover:opacity-85 object-cover">
-                                            <span class="h-[2.5rem] w-[2px] block bg-black group-hover:bg-black/50"></span>
-                                            <div class="font-bold text-md capitalize group-hover:text-black/50">
+                                                class="border-[1px] border-black rounded-full w-7 h-7 group-hover:opacity-85 object-cover">
+                                            <div class="font-bold text-sm capitalize group-hover:text-black/50">
                                                 Hello, {{ auth()->user()->name }}</div>
                                         </a>
                                     @endcan
